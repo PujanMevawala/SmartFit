@@ -1,14 +1,13 @@
 import os
 import chromadb
+import base64
+from io import BytesIO  # Specific import for BytesIO
 
 # Configure ChromaDB to use in-memory storage (no persistence needed for this app)
 os.environ["CHROMA_DB_PERSIST_DIRECTORY"] = ":memory:"  # Use in-memory storage
-chromadb.setup_logging()  # Optional: Enable ChromaDB logging for debugging
 
 from dotenv import load_dotenv
 import streamlit as st
-import io
-import base64
 from PIL import Image
 import pdf2image
 from groq import Groq
@@ -16,8 +15,8 @@ import google.generativeai as genai
 from streamlit_option_menu import option_menu
 from crewai import Agent, Task, Crew
 import plotly.express as px
-import plotly.graph_objects as go  # Added for gauge chart
-import re  # Added for regular expression
+import plotly.graph_objects as go
+import re
 
 # Load environment variables
 load_dotenv()
@@ -74,7 +73,7 @@ def input_pdf_setup(uploaded_file):
         try:
             images = pdf2image.convert_from_bytes(uploaded_file.read())
             first_page = images[0]
-            img_byte_arr = io.BytesIO()
+            img_byte_arr = BytesIO()
             first_page.save(img_byte_arr, format='JPEG')
             img_byte_arr = img_byte_arr.getvalue()
             pdf_parts = [{"mime_type": "image/jpeg", "data": base64.b64encode(img_byte_arr).decode()}]
@@ -186,7 +185,7 @@ def create_tasks(input_text, pdf_content, agents):
     return resume_task, interview_task, suggestion_task, job_fit_task
 
 # Streamlit UI
-st.set_page_config(page_title="SmartFitAI", page_icon="🤖", layout="wide")  # Updated title with robot emoji
+st.set_page_config(page_title="SmartFitAI", page_icon="🤖", layout="wide")
 
 # Enhanced CSS with Animations
 st.markdown("""
@@ -363,6 +362,6 @@ with st.expander("Learn About ATS & Interview Prep", expanded=False):
 # Updated Footer
 st.markdown("""
     <footer>
-        <p>© 2025 SmartFitAI 🤖 - Matching You Smartly to Your Dream Job! 
+        <p>© 2025 SmartFitAI 🤖 - Matching You Smartly to Your Dream Job!</p>
     </footer>
 """, unsafe_allow_html=True)

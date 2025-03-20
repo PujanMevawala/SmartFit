@@ -1,6 +1,6 @@
 # SmartFitAI 🤖
 
-Your Intelligent Job Match & Prep Companion!
+An Intelligent Job Match & Prep Companion!
 
 ## Overview
 
@@ -124,19 +124,6 @@ If you see API errors:
 - Verify your API keys in the `.env` file
 - Check your internet connection
 - Ensure you have sufficient credits/quota on your API accounts
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Thanks to the creators of the AI models used in this project
-- Special thanks to the Streamlit team for their amazing framework
 
 ## Contact
 

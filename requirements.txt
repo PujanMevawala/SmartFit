@@ -5,11 +5,12 @@ pdf2image==1.16.3
 groq==0.4.0
 google-generativeai==0.3.0
 streamlit-option-menu==0.3.6
-crewai==0.28.0
+crewai==0.51.1  # Updated to a more recent stable version
 plotly==5.15.0
-chromadb==0.4.24  # Compatible with embedchain 0.1.113
-tenacity==8.2.3   # Compatible with langchain ecosystem
+chromadb==0.5.3  # Updated to a newer version compatible with embedchain
+tenacity==8.2.3
 langchain==0.1.20
 langchain-core==0.1.53
 langchain-community==0.0.38
-embedchain==0.1.113
+embedchain==0.1.121  # Updated to a newer version
+pysqlite3  # Added to ensure SQLite compatibility

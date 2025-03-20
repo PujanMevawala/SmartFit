@@ -1,6 +1,12 @@
+import os
+import chromadb
+
+# Configure ChromaDB to use in-memory storage (no persistence needed for this app)
+os.environ["CHROMA_DB_PERSIST_DIRECTORY"] = ":memory:"  # Use in-memory storage
+chromadb.setup_logging()  # Optional: Enable ChromaDB logging for debugging
+
 from dotenv import load_dotenv
 import streamlit as st
-import os
 import io
 import base64
 from PIL import Image

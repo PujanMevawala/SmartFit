@@ -187,9 +187,7 @@ def create_tasks(input_text, pdf_content, agents):
     return resume_task, interview_task, suggestion_task, job_fit_task
 
 # Streamlit UI
-st.set_page_config(page_title="SmartFitAI", page_icon="🤖", layout="wide")
 
-# Enhanced CSS with Animations
 st.markdown("""
     <style>
         .header { text-align: center; color: #00acc1; animation: fadeIn 1s; }

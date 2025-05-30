@@ -1,11 +1,6 @@
 import os
-# import chromadb
 import base64
 from io import BytesIO  
-
-# Configure ChromaDB to use in-memory storage (no persistence needed for this app)
-# os.environ["CHROMA_DB_PERSIST_DIRECTORY"] = ":memory:" 
-
 from dotenv import load_dotenv
 import streamlit as st
 from PIL import Image
@@ -13,7 +8,6 @@ import pdf2image
 from groq import Groq
 import google.generativeai as genai
 from streamlit_option_menu import option_menu
-from crewai import Agent, Task, Crew
 import plotly.express as px
 import plotly.graph_objects as go
 import re

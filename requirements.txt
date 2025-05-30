@@ -8,3 +8,4 @@ streamlit-option-menu
 plotly
 poppler-utils
 crewai
+opencv-python-headless

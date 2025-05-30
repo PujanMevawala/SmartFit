@@ -1,4 +1,4 @@
-import os
+
 import base64
 from io import BytesIO  
 from dotenv import load_dotenv
@@ -12,6 +12,17 @@ import plotly.express as px
 import plotly.graph_objects as go
 from crewai import Agent, Task 
 import re
+# Add this near the top of your file, after imports
+import os
+port = int(os.environ.get("PORT", 10000))
+
+# Replace the st.set_page_config line with:
+st.set_page_config(
+    page_title="SmartFitAI",
+    page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 load_dotenv()
 

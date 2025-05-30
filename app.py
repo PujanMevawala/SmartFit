@@ -1,10 +1,10 @@
 import os
-import chromadb
+# import chromadb
 import base64
-from io import BytesIO  # Specific import for BytesIO
+from io import BytesIO  
 
 # Configure ChromaDB to use in-memory storage (no persistence needed for this app)
-os.environ["CHROMA_DB_PERSIST_DIRECTORY"] = ":memory:"  # Use in-memory storage
+# os.environ["CHROMA_DB_PERSIST_DIRECTORY"] = ":memory:" 
 
 from dotenv import load_dotenv
 import streamlit as st
@@ -18,14 +18,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 import re
 
-# Load environment variables
 load_dotenv()
 
-# Configure APIs
-groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+groq_client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
-# Available Models (Grok removed)
 AVAILABLE_MODELS = {
     "Gemini 1.5 Flash": {"provider": "google", "model": "gemini-1.5-flash"},
     "LLaMA 3.1 8B": {"provider": "groq", "model": "llama-3.1-8b-instant"},
@@ -37,7 +34,6 @@ AVAILABLE_MODELS = {
     "DeepSeek R1 Distill LLaMA 70B": {"provider": "groq", "model": "deepseek-r1-distill-llama-70b"}
 }
 
-# Function to get model response
 def get_model_response(input_text, pdf_content, prompt, model_info):
     st.write("Debug: PDF Content Received:", pdf_content is not None)
     if not pdf_content:
@@ -300,9 +296,8 @@ if uploaded_file is not None:
                     st.success("Job Fit Calculated ✅")
                     with response_placeholder:
                         st.subheader("Job Fit Score:")
-                        st.write("Debug: Raw Result:", result)  # Debug output
+                        st.write("Debug: Raw Result:", result)  
                         st.write(result)
-                        # Use regex to extract the score
                         score_match = re.search(r"Job Fit Score:\s*(\d+)", result, re.IGNORECASE)
                         score = int(score_match.group(1)) if score_match else 50
                         

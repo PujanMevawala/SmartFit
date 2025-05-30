@@ -10,6 +10,7 @@ import google.generativeai as genai
 from streamlit_option_menu import option_menu
 import plotly.express as px
 import plotly.graph_objects as go
+from crewai import Agent, Task 
 import re
 
 load_dotenv()

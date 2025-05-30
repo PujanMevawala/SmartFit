@@ -7,3 +7,4 @@ google-generativeai
 streamlit-option-menu
 plotly
 poppler-utils
+crewai

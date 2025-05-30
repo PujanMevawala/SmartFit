@@ -14,8 +14,8 @@ import re
 
 load_dotenv()
 
-groq_client = Groq(api_key=st.secrets["GROQ_API_KEY"])
-genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 AVAILABLE_MODELS = {
     "Gemini 1.5 Flash": {"provider": "google", "model": "gemini-1.5-flash"},

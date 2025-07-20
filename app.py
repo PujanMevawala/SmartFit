@@ -220,7 +220,7 @@ st.markdown("""
 
 # Sidebar
 with st.sidebar:
-    st.image("ats.png")
+    st.image("smartfit_logo.jpg")
     st.header("Upload & Configure")
     input_text = st.text_area("Paste Job Description Here 👇", key="input", placeholder="Paste the job description...")
     uploaded_file = st.file_uploader("Upload Your Resume PDF", type=["pdf"])

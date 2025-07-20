@@ -6,6 +6,10 @@ An Intelligent Job Match & Prep Companion!
 
 SmartFitAI is an intelligent resume analysis tool that helps job seekers optimize their resumes for Applicant Tracking Systems (ATS) and prepare for interviews. The application leverages multiple AI models to provide comprehensive analysis, interview preparation, improvement suggestions, and job fit scoring.
 
+## Live Demo
+
+Check out the live application here: [https://smartfit-sqld.onrender.com/](https://smartfit-sqld.onrender.com/)
+
 ## Features
 
 - **Resume Analysis**: Detailed assessment of your resume's strengths and weaknesses
@@ -25,29 +29,32 @@ SmartFitAI is an intelligent resume analysis tool that helps job seekers optimiz
 ## Installation
 
 1. Clone the repository:
+
    ```
-   git clone https://github.com/yourusername/smartfitai.git
+   git clone https://github.com/PujanMevawala/SmartFit.git
    cd smartfitai
    ```
 
 2. Create a virtual environment and activate it:
+
    ```
    python -m venv venv
-   
+
    # On Windows
    venv\Scripts\activate
-   
+
    # On macOS/Linux
    source venv/bin/activate
    ```
 
 3. Install the required packages:
+
    ```
    pip install -r req.txt
    ```
 
 4. Install Poppler (required for PDF2Image):
-   
+
    - **Windows**: Download from [http://blog.alivate.com.au/poppler-windows/](http://blog.alivate.com.au/poppler-windows/) and add to PATH
    - **macOS**: `brew install poppler`
    - **Linux**: `sudo apt-get install poppler-utils`
@@ -55,6 +62,7 @@ SmartFitAI is an intelligent resume analysis tool that helps job seekers optimiz
 ## Configuration
 
 1. Create a `.env` file in the project root with your API keys:
+
    ```
    GROQ_API_KEY=your_groq_api_key_here
    GOOGLE_API_KEY=your_google_api_key_here
@@ -65,6 +73,7 @@ SmartFitAI is an intelligent resume analysis tool that helps job seekers optimiz
 ## Usage
 
 1. Run the Streamlit application:
+
    ```
    streamlit run app.py
    ```
@@ -103,6 +112,7 @@ smartfitai/
 ## Dependencies
 
 The project uses the following main libraries:
+
 - `streamlit`: For the web interface
 - `python-dotenv`: For environment variable management
 - `pdf2image`: For converting PDF resumes to images
@@ -117,10 +127,12 @@ The project uses the following main libraries:
 ## Troubleshooting
 
 If you encounter issues with PDF processing:
+
 - Ensure Poppler is correctly installed and accessible in your PATH
 - Check that your PDF is not password-protected or corrupted
 
 If you see API errors:
+
 - Verify your API keys in the `.env` file
 - Check your internet connection
 - Ensure you have sufficient credits/quota on your API accounts

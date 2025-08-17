@@ -14,9 +14,11 @@ from crewai import Agent, Task
 import re
 # Add this near the top of your file, after imports
 import os
-port = int(os.environ.get("PORT", 10000))
 
-# Replace the st.set_page_config line with:
+# Load environment variables
+load_dotenv()
+
+# Configure Streamlit for deployment
 st.set_page_config(
     page_title="SmartFitAI",
     page_icon="🤖",
@@ -24,10 +26,20 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-load_dotenv()
+# Initialize API clients with error handling
+groq_api_key = os.getenv("GROQ_API_KEY")
+google_api_key = os.getenv("GOOGLE_API_KEY")
 
-groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+if groq_api_key:
+    groq_client = Groq(api_key=groq_api_key)
+else:
+    groq_client = None
+    st.warning("⚠️ GROQ_API_KEY not found. Some features may not work.")
+
+if google_api_key:
+    genai.configure(api_key=google_api_key)
+else:
+    st.warning("⚠️ GOOGLE_API_KEY not found. Some features may not work.")
 
 AVAILABLE_MODELS = {
     "Gemini 1.5 Flash": {"provider": "google", "model": "gemini-1.5-flash"},

@@ -1,142 +1,144 @@
 # SmartFitAI 🤖
 
-An Intelligent Job Match & Prep Companion!
-
-## Overview
-
-SmartFitAI is an intelligent resume analysis tool that helps job seekers optimize their resumes for Applicant Tracking Systems (ATS) and prepare for interviews. The application leverages multiple AI models to provide comprehensive analysis, interview preparation, improvement suggestions, and job fit scoring.
-
-## Live Demo
-
-Check out the live application here: [https://smartfit-sqld.onrender.com/](https://smartfit-sqld.onrender.com/)
+Your Intelligent Job Match & Prep Companion!
 
 ## Features
 
-- **Resume Analysis**: Detailed assessment of your resume's strengths and weaknesses
-- **Interview Prep**: Generation of tailored technical and behavioral interview questions
-- **Improvement Suggestions**: Actionable tips to enhance your resume's ATS compatibility
-- **Job Fit Scoring**: Quantitative evaluation of how well your resume matches a job description
-- **Multiple AI Models**: Support for various AI models including Gemini, LLaMA, Mixtral, and more
+- **Resume Analysis**: Get detailed assessment of your resume against job descriptions
+- **Interview Preparation**: Generate tailored technical and behavioral questions
+- **ATS Optimization**: Receive suggestions to improve resume for ATS compatibility
+- **Job Fit Scoring**: Get a comprehensive job fit score with detailed feedback
+- **Multi-Model AI**: Choose from various AI models (Gemini, LLaMA, Mixtral, etc.)
 
-## Requirements
+## Local Development Setup
 
-- Python 3.8+
-- Streamlit
-- PDF2Image and Poppler (for PDF processing)
-- Groq API key
-- Google Generative AI API key
-
-## Installation
-
-1. Clone the repository:
-
-   ```
-   git clone https://github.com/PujanMevawala/SmartFit.git
-   cd smartfitai
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd SmartFit
    ```
 
-2. Create a virtual environment and activate it:
-
-   ```
+2. **Create virtual environment**
+   ```bash
    python -m venv venv
-
-   # On Windows
-   venv\Scripts\activate
-
-   # On macOS/Linux
-   source venv/bin/activate
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. Install the required packages:
-
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
    ```
-   pip install -r req.txt
-   ```
 
-4. Install Poppler (required for PDF2Image):
-
-   - **Windows**: Download from [http://blog.alivate.com.au/poppler-windows/](http://blog.alivate.com.au/poppler-windows/) and add to PATH
-   - **macOS**: `brew install poppler`
-   - **Linux**: `sudo apt-get install poppler-utils`
-
-## Configuration
-
-1. Create a `.env` file in the project root with your API keys:
-
+4. **Set up environment variables**
+   Create a `.env` file in the root directory:
    ```
    GROQ_API_KEY=your_groq_api_key_here
    GOOGLE_API_KEY=your_google_api_key_here
    ```
 
-2. Make sure you have an `ats.png` image in the project root for the sidebar logo.
-
-## Usage
-
-1. Run the Streamlit application:
-
-   ```
+5. **Run the application**
+   ```bash
    streamlit run app.py
    ```
 
-2. Open your web browser and navigate to `http://localhost:8501`
+## Deployment to Render
 
-3. Using the application:
-   - Paste the job description in the sidebar text area
-   - Upload your resume as a PDF file
-   - Select your preferred AI model
-   - Navigate through the tabs to access different features
-   - Click the action buttons to analyze your resume, generate interview questions, get suggestions, or calculate job fit
+### Prerequisites
+- GitHub account with your code repository
+- Render account
+- API keys for Groq and Google Generative AI
 
-## Supported AI Models
+### Deployment Steps
 
-- Gemini 1.5 Flash (Google)
-- LLaMA 3.1 8B (Groq)
-- Mixtral 8x7B (Groq)
-- LLaMA 3.3 70B-Versatile (Groq)
-- LLaMA 3.3 70B SpecDec (Groq)
-- Mistral-Saba-24B (Groq)
-- DeepSeek R1 Distill Qwen 32B (Groq)
-- DeepSeek R1 Distill LLaMA 70B (Groq)
+1. **Push your code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Initial deployment setup"
+   git push origin main
+   ```
 
-## Project Structure
+2. **Connect to Render**
+   - Go to [render.com](https://render.com)
+   - Sign up/Login with your GitHub account
+   - Click "New +" and select "Web Service"
+
+3. **Configure the service**
+   - **Name**: `smartfit` (or your preferred name)
+   - **Repository**: Select your GitHub repository
+   - **Branch**: `main`
+   - **Root Directory**: Leave empty (if app is in root)
+   - **Runtime**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `streamlit run app.py --server.port $PORT --server.address 0.0.0.0`
+
+4. **Set Environment Variables**
+   In Render dashboard, go to your service → Environment:
+   - `GROQ_API_KEY`: Your Groq API key
+   - `GOOGLE_API_KEY`: Your Google Generative AI API key
+   - `PORT`: `8501`
+
+5. **Deploy**
+   - Click "Create Web Service"
+   - Render will automatically build and deploy your app
+   - Your app will be available at the provided URL
+
+## API Keys Setup
+
+### Groq API Key
+1. Go to [console.groq.com](https://console.groq.com)
+2. Sign up/Login
+3. Navigate to API Keys section
+4. Create a new API key
+5. Copy and use in your environment variables
+
+### Google Generative AI API Key
+1. Go to [Google AI Studio](https://aistudio.google.com/)
+2. Sign in with your Google account
+3. Navigate to API Keys
+4. Create a new API key
+5. Copy and use in your environment variables
+
+## File Structure
 
 ```
-smartfitai/
-├── app.py           # Main Streamlit application file
-├── ats.png          # Logo image for sidebar
-├── .env             # Environment variables (API keys)
-├── req.txt          # Required packages
-└── README.md        # Project documentation
+SmartFit/
+├── app.py                 # Main Streamlit application
+├── requirements.txt       # Python dependencies
+├── render.yaml           # Render deployment configuration
+├── config.toml           # Streamlit configuration
+├── smartfit_logo.jpg     # Application logo
+├── .env                  # Environment variables (not in git)
+├── .gitignore           # Git ignore rules
+└── README.md            # This file
 ```
 
-## Dependencies
+## Security Notes
 
-The project uses the following main libraries:
-
-- `streamlit`: For the web interface
-- `python-dotenv`: For environment variable management
-- `pdf2image`: For converting PDF resumes to images
-- `groq`: Groq API client for LLM access
-- `google-generativeai`: Google Generative AI API client
-- `streamlit-option-menu`: For enhanced navigation
-- `crewai`: For agent-based task execution
-- `plotly`: For data visualization
-- `langchain`: For LLM orchestration
-- `embedchain`: For embedding and retrieval
+- Never commit `.env` files to version control
+- API keys are stored as environment variables in Render
+- The `.gitignore` file excludes sensitive files from Git
 
 ## Troubleshooting
 
-If you encounter issues with PDF processing:
+### Common Issues
 
-- Ensure Poppler is correctly installed and accessible in your PATH
-- Check that your PDF is not password-protected or corrupted
+1. **App not loading**: Check if all environment variables are set in Render
+2. **PDF processing errors**: Ensure `poppler-utils` is properly installed
+3. **API errors**: Verify your API keys are valid and have sufficient credits
 
-If you see API errors:
+### Local Development Issues
 
-- Verify your API keys in the `.env` file
-- Check your internet connection
-- Ensure you have sufficient credits/quota on your API accounts
+1. **Port conflicts**: Change port in `config.toml` if 8501 is in use
+2. **Missing dependencies**: Run `pip install -r requirements.txt`
+3. **Environment variables**: Ensure `.env` file exists with proper API keys
 
-## Contact
+## Support
 
-For any questions or feedback, please reach out to [pujanmevawala080304@gmail.com](mailto:pujanmevawala080304@gmail.com)
+For issues and questions:
+- Check the troubleshooting section above
+- Review Render deployment logs
+- Ensure all dependencies are properly installed
+
+---
+
+© 2025 SmartFitAI 🤖 - Matching You Smartly to Your Dream Job!

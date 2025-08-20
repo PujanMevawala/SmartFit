@@ -5,35 +5,41 @@ Your Intelligent Job Match & Prep Companion!
 ## Features
 
 - **Resume Analysis**: Get detailed assessment of your resume against job descriptions
-- **Interview Preparation**: Generate tailored technical and behavioral questions
+- **Interview Preparation**: Generate resume-based technical questions with detailed answer guidance
 - **ATS Optimization**: Receive suggestions to improve resume for ATS compatibility
 - **Job Fit Scoring**: Get a comprehensive job fit score with detailed feedback
 - **Multi-Model AI**: Choose from various AI models (Gemini, LLaMA, Mixtral, etc.)
+  - Added: Gemini 2.5 Pro/Flash, Perplexity Sonar models, and Groq Meta LLaMA 4 Maverick 17B
 
 ## Local Development Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone <your-repo-url>
    cd SmartFit
    ```
 
 2. **Create virtual environment**
+
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. **Install dependencies**
+
    ```bash
    pip install -r requirements.txt
    ```
 
 4. **Set up environment variables**
    Create a `.env` file in the root directory:
+
    ```
    GROQ_API_KEY=your_groq_api_key_here
    GOOGLE_API_KEY=your_google_api_key_here
+   PPLX_API_KEY=your_perplexity_api_key_here
    ```
 
 5. **Run the application**
@@ -44,6 +50,7 @@ Your Intelligent Job Match & Prep Companion!
 ## Deployment to Render
 
 ### Prerequisites
+
 - GitHub account with your code repository
 - Render account
 - API keys for Groq and Google Generative AI
@@ -51,6 +58,7 @@ Your Intelligent Job Match & Prep Companion!
 ### Deployment Steps
 
 1. **Push your code to GitHub**
+
    ```bash
    git add .
    git commit -m "Initial deployment setup"
@@ -58,11 +66,13 @@ Your Intelligent Job Match & Prep Companion!
    ```
 
 2. **Connect to Render**
+
    - Go to [render.com](https://render.com)
    - Sign up/Login with your GitHub account
    - Click "New +" and select "Web Service"
 
 3. **Configure the service**
+
    - **Name**: `smartfit` (or your preferred name)
    - **Repository**: Select your GitHub repository
    - **Branch**: `main`
@@ -73,8 +83,10 @@ Your Intelligent Job Match & Prep Companion!
 
 4. **Set Environment Variables**
    In Render dashboard, go to your service → Environment:
+
    - `GROQ_API_KEY`: Your Groq API key
    - `GOOGLE_API_KEY`: Your Google Generative AI API key
+   - `PPLX_API_KEY`: Your Perplexity API key
    - `PORT`: `8501`
 
 5. **Deploy**
@@ -85,6 +97,7 @@ Your Intelligent Job Match & Prep Companion!
 ## API Keys Setup
 
 ### Groq API Key
+
 1. Go to [console.groq.com](https://console.groq.com)
 2. Sign up/Login
 3. Navigate to API Keys section
@@ -92,11 +105,18 @@ Your Intelligent Job Match & Prep Companion!
 5. Copy and use in your environment variables
 
 ### Google Generative AI API Key
+
 1. Go to [Google AI Studio](https://aistudio.google.com/)
 2. Sign in with your Google account
 3. Navigate to API Keys
 4. Create a new API key
 5. Copy and use in your environment variables
+
+### Perplexity API Key
+
+1. Go to [`https://www.perplexity.ai/settings/api`](https://www.perplexity.ai/settings/api)
+2. Create an API key
+3. Use as `PPLX_API_KEY`
 
 ## File Structure
 
@@ -135,6 +155,7 @@ SmartFit/
 ## Support
 
 For issues and questions:
+
 - Check the troubleshooting section above
 - Review Render deployment logs
 - Ensure all dependencies are properly installed

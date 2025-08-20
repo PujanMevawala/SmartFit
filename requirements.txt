@@ -9,3 +9,5 @@ plotly
 poppler-utils
 crewai
 opencv-python-headless
+openai>=1.40.0
+streamlit-extras
